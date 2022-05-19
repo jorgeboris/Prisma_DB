@@ -1,0 +1,24 @@
+{
+  "name": "prisma_db",
+  "version": "1.0.0",
+  "description": "Conexión a Base de Datos Postgresql",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jorgeboris/Prisma_DB.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jorgeboris/Prisma_DB/issues"
+  },
+  "homepage": "https://github.com/jorgeboris/Prisma_DB#readme",
+  "devDependencies": {
+    "express": "^4.18.1",
+    "prisma": "^3.14.0"
+  }
+}
