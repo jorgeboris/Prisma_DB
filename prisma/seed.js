@@ -63,6 +63,30 @@ const prisma = new PrismaClient();
         }
     });
 
+    const alex = await prisma.explorerData.upsert({
+        where: { name: 'Alex' },
+        update: {},
+        create: {
+            name: 'Alex',
+            lang: 'Spanish',
+            missionCommander: 'Carlo',
+            enrollments: 2
+        }
+    });
+
+    const jose = await prisma.explorerData.upsert({
+        where: { name: 'Jose' },
+        update: {},
+        create: {
+            name: 'Jose',
+            lang: 'English',
+            missionCommander: 'Fernanda',
+            enrollments: 1
+        }
+    });
+
+
+
     console.log('Create 6 explorers');
   } catch(e) {
     console.error(e);
