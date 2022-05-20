@@ -65,6 +65,18 @@ app.get('/explorersData/:id', async (req, res) => {
     res.json(explorer);
 });
 
+app.post('/explorersData', async (req, res) => {
+    const explorer = {
+        name: req.body.name,
+        lang: req.body.lang,
+        missionCommander: req.body.missionCommander,
+        enrollments: req.body.enrollments
+    };
+    const message = 'Explorer creado';
+    await prisma.explorer.create({data: explorer});
+    return res.json({message});
+});
+
 app.listen(port, () => {
   console.log(`Listening to requests on port ${port}`);
 });
