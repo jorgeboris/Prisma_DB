@@ -73,8 +73,23 @@ app.post('/explorersData', async (req, res) => {
         enrollments: req.body.enrollments
     };
     const message = 'Explorer creado';
-    await prisma.explorer.create({data: explorer});
+    await prisma.explorerData.create({data: explorer});
     return res.json({message});
+});
+
+app.put('/explorersData/:id', async (req, res) => {
+    const id = parseInt(req.params.id);
+
+    await prisma.explorerData.update({
+        where: {
+            id:id
+        },
+        data: {
+            enrollments: req.body.enrollments
+        }
+    })
+
+    return res.json({message: "Actualizado correctamente"});
 });
 
 app.listen(port, () => {
