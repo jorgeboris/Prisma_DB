@@ -48,15 +48,21 @@ app.put('/explorers/:id', async (req, res) => {
     return res.json({message: "Actualizado correctamente"});
 });
 
+app.delete('/explorers/:id', async (req, res) => {
+    const id = parseInt(req.params.id);
+    await prisma.explorer.delete({where: {id:id}});
+    return res.json({message: "Eliminado correctamente"});
+});
+
 app.get('/explorersData', async (req, res) => {
     const allExplorersData = await prisma.explorerData.findMany({});
     res.json(allExplorersData);
 });
 
-app.delete('/explorers/:id', async (req, res) => {
-    const id = parseInt(req.params.id);
-    await prisma.explorer.delete({where: {id:id}});
-    return res.json({message: "Eliminado correctamente"});
+app.get('/explorersData/:id', async (req, res) => {
+    const id = req.params.id;
+    const explorer = await prisma.explorerData.findUnique({ where: {id: parseInt(id)}});
+    res.json(explorer);
 });
 
 app.listen(port, () => {
